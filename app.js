@@ -79,7 +79,7 @@ app.post('/restaurant/:id/edit', (req, res) => {
       restaurant.description = description
       return restaurant.save()
     })
-    .then(() => res.redirect(`/restaurant/${id}/edit`))
+    .then(() => res.redirect(`/restaurant/detail/${id}`))
     .catch(err => console.log(err))
 })
 
