@@ -63,7 +63,7 @@ app.get('/restaurant/:id/edit', (req, res) => {
 app.post('/restaurant/:id/edit', (req, res) => {
   let { name, name_en, category, phone, image, location, rating, google_map, description } = req.body
   const id = req.params.id
-  if (image.length === 0) {
+  if (!image.length) {
     image = 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/No_image_3x4.svg/640px-No_image_3x4.svg.png'
   }
   return Restaurant.findById(id)
@@ -104,7 +104,7 @@ app.get('/search', (req, res) => {
         || restaurant.category.toLowerCase().includes(keyword)
       )
     })
-    .then(restaurants => res.render('index', { restaurants, keyword: keyword }))
+    .then(restaurants => res.render('index', { restaurants, keyword }))
     .catch(err => console.log(err))
 })
 
